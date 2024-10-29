@@ -1,10 +1,8 @@
-import globals from 'globals';
 import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import eslintPluginPrettierRecommended, {
-  languageOptions,
-} from 'eslint-plugin-prettier/recommended';
 import eslintPluginPlaywright from 'eslint-plugin-playwright';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
 export default [
   {
@@ -25,18 +23,6 @@ export default [
     },
   },
   ...tseslint.configs.recommended,
-  {
-    // languageOptions: {
-    //   parserOptions: {
-    //     project: true,
-    //     tsconfigRootDir: '.',
-    //   },
-    // },
-    rules: {
-      '@typescript-eslint/explicit-function-return-type': 'error',
-      // '@typescript-eslint/no-floating-promises': 'error',
-    },
-  },
   eslintPluginPlaywright.configs['flat/recommended'],
   eslintPluginPrettierRecommended,
 ];
