@@ -1,9 +1,11 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 
 export class PlaywrightPage {
-  button = page.getByRole('link', { name: 'Get started' });
+  button: Locator;
 
-  constructor(private page: Page) {}
+  constructor(private page: Page) {
+    this.button = page.getByRole('link', { name: 'Get started' });
+  }
 
   async goto(): Promise<void> {
     await this.page.goto('https://playwright.dev/');
