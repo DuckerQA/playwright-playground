@@ -1,3 +1,4 @@
+import { PlaywrightPage } from './playwright.page';
 import { expect, test } from '@playwright/test';
 
 test('has title', async ({ page }) => {
@@ -13,6 +14,15 @@ test('get started link', async ({ page }) => {
   const button = page.getByRole('link', { name: 'Get started' });
   button.click();
   // Expects page to have a heading with the name of Installation.
+  await expect(
+    page.getByRole('heading', { name: 'Installation' }),
+  ).toBeVisible();
+});
+
+test('get started link pom', async ({ page }) => {
+  const playwrightPage = new PlaywrightPage(page);
+  await playwrightPage.goto();
+  await playwrightPage.button.click();
   await expect(
     page.getByRole('heading', { name: 'Installation' }),
   ).toBeVisible();

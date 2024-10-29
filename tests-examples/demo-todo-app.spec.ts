@@ -472,7 +472,6 @@ async function checkNumberOfCompletedTodosInLocalStorage(
   page: Page,
   expected: number,
 ) {
-  console.log('test');
   return await page.waitForFunction((e) => {
     return (
       JSON.parse(localStorage['react-todos']).filter(
