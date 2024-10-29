@@ -1,0 +1,9 @@
+dist
+.features-gen
+.cache
+playwright-report
+**/*.md
+package-lock.json
+test-results
+allure-report
+allure-reports
