@@ -14,3 +14,23 @@ export interface RegisterUserModel {
   zipcode: string;
   mobileNumber: string;
 }
+
+export interface RegisterUserInitModel {
+  userLogin: RegisterUserModel['userLogin'];
+  userEmail: RegisterUserModel['userEmail'];
+}
+
+export interface RegistrationDetailsModel {
+  password: RegisterUserModel['password'];
+  birthDay: RegisterUserModel['birthDay'];
+  birthMonth: RegisterUserModel['birthMonth'];
+  birthYear: RegisterUserModel['birthYear'];
+  firstName: RegisterUserModel['firstName'];
+  lastName: RegisterUserModel['lastName'];
+  address: RegisterUserModel['address'];
+  country: RegisterUserModel['country'];
+  state: RegisterUserModel['state'];
+  city: RegisterUserModel['city'];
+  zipcode: RegisterUserModel['zipcode'];
+  mobileNumber: RegisterUserModel['mobileNumber'];
+}
