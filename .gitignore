@@ -4,3 +4,4 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 .DS_Store
+tests/automationexercise.com/src/datafactory/tempUserData.json
