@@ -4,5 +4,11 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-  "cSpell.words": ["domcontentloaded", "trivago", "tseslint", "zipcode"]
+  "cSpell.words": [
+    "datafactory",
+    "domcontentloaded",
+    "trivago",
+    "tseslint",
+    "zipcode"
+  ]
 }
