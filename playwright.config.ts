@@ -2,6 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 
 // require('dotenv').config();
 
+// export const STORAGE_STATE =
+
 export default defineConfig({
   testDir: './tests',
   timeout: 60_000,
@@ -21,8 +23,25 @@ export default defineConfig({
   },
   projects: [
     {
+      name: 'setup',
+      testMatch: '**.setup.ts',
+    },
+    {
+      name: 'logged',
+      grep: /@logged/,
+      dependencies: ['setup'],
+      use: {
+        storageState: 'tests/automationexercise.com/tmp/session.json',
+      },
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
+    // {
+    //   name: 'chromium logged',
+    //   use: { ...devices['Desktop Chrome'] },
+    //   // dependencies: ['setup acc'],
+    // },
   ],
 });
