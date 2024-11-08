@@ -4,4 +4,5 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 .DS_Store
-tests/automationexercise.com/src/datafactory/tempUserData.json
+tests/automationexercise.com/tmp/*
+!/tests/automationexercise.com/tmp/.gitkeep

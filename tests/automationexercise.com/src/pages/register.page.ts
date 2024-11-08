@@ -26,6 +26,7 @@ export class RegisterPage extends BasePage {
   readonly mobileNumber: Locator;
   readonly createAccountButton: Locator;
   readonly accountCreatedMessage: Locator;
+  readonly continueToLoginButton: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -49,6 +50,7 @@ export class RegisterPage extends BasePage {
     this.mobileNumber = page.locator('#mobile_number');
     this.createAccountButton = page.locator('[data-qa="create-account"]');
     this.accountCreatedMessage = page.locator('[data-qa="account-created"]');
+    this.continueToLoginButton = page.locator('[data-qa="continue-button"]');
   }
 
   async initAccountCreation(
