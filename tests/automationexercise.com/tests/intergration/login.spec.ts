@@ -1,5 +1,5 @@
-import { userData } from '../src/datafactory/userData';
-import { LoginPage } from '../src/pages/login.page';
+import { userData } from '../../src/datafactory/globalUserDataGenerator';
+import { LoginPage } from '../../src/pages/login.page';
 import { expect, test } from '@playwright/test';
 
 test.describe('Verify login', () => {
