@@ -3,9 +3,11 @@ import {
   RegistrationDetailsModel,
 } from '../models/user.model';
 import { BasePage } from './base.page';
-import { Locator, Page, expect } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 
 export class RegisterPage extends BasePage {
+  readonly signupLoginButton: Locator;
+  readonly validationEmailDuplicate: Locator;
   readonly signUpName: Locator;
   readonly signUpEmail: Locator;
   readonly signUpButton: Locator;
@@ -30,6 +32,10 @@ export class RegisterPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
+    this.signupLoginButton = page.getByRole('link', {
+      name: ' Signup / Login',
+    });
+    this.validationEmailDuplicate = page.locator('.signup-form p');
     this.signUpName = page.locator('[data-qa="signup-name"]');
     this.signUpEmail = page.locator('[data-qa="signup-email"]');
     this.signUpButton = page.locator('[data-qa="signup-button"]');
@@ -60,9 +66,6 @@ export class RegisterPage extends BasePage {
     await this.signUpName.fill(userInitRegister.userLogin);
     await this.signUpEmail.fill(userInitRegister.userEmail);
     await this.signUpButton.click();
-    await expect
-      .soft(this.accountInfoHeader)
-      .toContainText('Enter Account Information');
   }
 
   async completeRegistrationDetails(

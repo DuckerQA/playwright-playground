@@ -1,6 +1,7 @@
 /* eslint-disable playwright/no-standalone-expect */
+import { STORAGE_STATE } from '../../../../playwright.config';
+import { saveUserData } from '../../src/datafactory/globalUserDataGenerator';
 import { prepareRandomUser } from '../datafactory/user.factory';
-import { saveUserData } from '../datafactory/userDataSaver';
 import { RegisterUserModel } from '../models/user.model';
 import { LoginPage } from '../pages/login.page';
 import { RegisterPage } from '../pages/register.page';
@@ -15,11 +16,16 @@ setup('Register to the page', async ({ page }) => {
   registerUserData = prepareRandomUser();
 
   await registerPage.goto();
-  await page.getByRole('link', { name: ' Signup / Login' }).click();
+  await registerPage.signupLoginButton.click();
   await registerPage.initAccountCreation({
     userLogin: registerUserData.userLogin,
     userEmail: registerUserData.userEmail,
   });
+
+  await expect
+    .soft(registerPage.accountInfoHeader)
+    .toContainText('Enter Account Information');
+
   await registerPage.completeRegistrationDetails({
     password: registerUserData.password,
     birthDay: registerUserData.birthDay,
@@ -40,7 +46,7 @@ setup('Register to the page', async ({ page }) => {
     accountCreatedInfo,
   );
 
-  //save data after the test
+  //save data after the test as tmp file
   saveUserData(registerUserData);
 
   const loggedUserInfo = await loginPage.checkIfLoginIsDisplayed(
@@ -52,7 +58,5 @@ setup('Register to the page', async ({ page }) => {
   await expect(loggedUserInfo).toBeVisible();
 
   //create StorageState
-  await page
-    .context()
-    .storageState({ path: 'tests/automationexercise.com/tmp/session.json' });
+  await page.context().storageState({ path: STORAGE_STATE });
 });

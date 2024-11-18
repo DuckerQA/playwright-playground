@@ -1,11 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as path from 'path';
 
-// require('dotenv').config();
-
-// export const STORAGE_STATE =
+export const STORAGE_STATE = path.join(
+  __dirname,
+  'tests/automationexercise.com/tmp/session.json',
+);
 
 export default defineConfig({
   testDir: './tests',
+  globalSetup: 'tests/automationexercise.com/src/global.setup.ts',
   timeout: 60_000,
   expect: {
     timeout: 10_000,
@@ -15,7 +18,7 @@ export default defineConfig({
   workers: undefined,
   reporter: 'html',
   use: {
-    baseURL: 'https://www.automationexercise.com/',
+    baseURL: process.env.BASE_URL,
     actionTimeout: 0,
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
@@ -31,7 +34,7 @@ export default defineConfig({
       grep: /@logged/,
       dependencies: ['setup'],
       use: {
-        storageState: 'tests/automationexercise.com/tmp/session.json',
+        storageState: STORAGE_STATE,
       },
     },
     {
