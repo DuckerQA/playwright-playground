@@ -16,11 +16,16 @@ setup('Register to the page', async ({ page }) => {
   registerUserData = prepareRandomUser();
 
   await registerPage.goto();
-  await page.getByRole('link', { name: ' Signup / Login' }).click();
+  await registerPage.signupLoginButton.click();
   await registerPage.initAccountCreation({
     userLogin: registerUserData.userLogin,
     userEmail: registerUserData.userEmail,
   });
+
+  await expect
+    .soft(registerPage.accountInfoHeader)
+    .toContainText('Enter Account Information');
+
   await registerPage.completeRegistrationDetails({
     password: registerUserData.password,
     birthDay: registerUserData.birthDay,
