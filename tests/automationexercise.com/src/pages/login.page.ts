@@ -13,7 +13,7 @@ export class LoginPage extends BasePage {
     this.loginEmail = page.locator('[data-qa="login-email"]');
     this.loginPassword = page.locator('[data-qa="login-password"]');
     this.loginButton = page.locator('[data-qa="login-button"]');
-    this.logoutButton = page.getByText('Logout', { exact: true });
+    this.logoutButton = page.getByRole('link', { name: 'Logout' }); // page.getByText('Logout', { exact: true }) alternative
     this.validationLocator = page.locator('.login-form p');
   }
 
