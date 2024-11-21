@@ -24,7 +24,7 @@ export class LoginPage extends BasePage {
     await this.loginButton.click();
   }
 
-  async checkIfLoginIsDisplayed(userLogin: string): Promise<Locator> {
+  async getLoggedInUserLocator(userLogin: string): Promise<Locator> {
     return this.page
       .locator('li')
       .filter({ hasText: `Logged in as ${userLogin}` });

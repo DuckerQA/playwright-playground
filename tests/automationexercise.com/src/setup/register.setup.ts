@@ -49,7 +49,7 @@ setup('Register to the page', async ({ page }) => {
   //save data after the test as tmp file
   saveUserData(registerUserData);
 
-  const loggedUserInfo = await loginPage.checkIfLoginIsDisplayed(
+  const loggedUserInfo = await loginPage.getLoggedInUserLocator(
     registerUserData.userLogin,
   );
 

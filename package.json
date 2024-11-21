@@ -9,7 +9,7 @@
     "lint": "npx eslint . --max-warnings 0",
     "tsc:check": "npx tsc --noEmit --pretty --strict",
     "test": "npx playwright test",
-    "test:headed": "npx playwright test -- --headed",
+    "test:headed": "npx playwright test --headed",
     "test:ui": "npm run test -- --ui",
     "show-report": "npx playwright show-report"
   },
