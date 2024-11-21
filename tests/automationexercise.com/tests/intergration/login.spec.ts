@@ -7,7 +7,7 @@ test.describe('Verify login', () => {
     page,
   }) => {
     const loginPage = new LoginPage(page);
-    const loggedUserInfo = await loginPage.checkIfLoginIsDisplayed(
+    const loggedUserInfo = await loginPage.getLoggedInUserLocator(
       userData.userLogin,
     );
 
@@ -36,7 +36,7 @@ test.describe('Verify login', () => {
 
   test('should allow the user to log out successfully', async ({ page }) => {
     const loginPage = new LoginPage(page);
-    const loggedUserInfo = await loginPage.checkIfLoginIsDisplayed(
+    const loggedUserInfo = await loginPage.getLoggedInUserLocator(
       userData.userLogin,
     );
 
