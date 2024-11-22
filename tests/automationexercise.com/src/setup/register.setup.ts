@@ -1,18 +1,14 @@
 /* eslint-disable playwright/no-standalone-expect */
 import { STORAGE_STATE } from '../../../../playwright.config';
 import { saveUserData } from '../../src/datafactory/globalUserDataGenerator';
+import { expect, test as setup } from '../../src/fixtures/merge.fixtures';
 import { prepareRandomUser } from '../datafactory/user.factory';
 import { RegisterUserModel } from '../models/user.model';
-import { LoginPage } from '../pages/login.page';
-import { RegisterPage } from '../pages/register.page';
-import { expect, test as setup } from '@playwright/test';
 
 let registerUserData: RegisterUserModel;
 
-setup('Register to the page', async ({ page }) => {
+setup('Register to the page', async ({ page, registerPage, loginPage }) => {
   const accountCreatedInfo = 'Account Created!';
-  const registerPage = new RegisterPage(page);
-  const loginPage = new LoginPage(page);
   registerUserData = prepareRandomUser();
 
   await registerPage.goto();

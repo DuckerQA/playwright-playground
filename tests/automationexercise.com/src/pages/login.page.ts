@@ -1,6 +1,6 @@
 import { LoginUserModel } from '../models/user.model';
 import { BasePage } from './base.page';
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 
 export class LoginPage extends BasePage {
   readonly loginEmail: Locator;
@@ -28,5 +28,15 @@ export class LoginPage extends BasePage {
     return this.page
       .locator('li')
       .filter({ hasText: `Logged in as ${userLogin}` });
+  }
+
+  async assertLoggedOut() {
+    await expect(this.page).toHaveURL('login');
+  }
+  async assertLoggedIn(userLogin: string): Promise<void> {
+    const loggedUserInfo = this.page
+      .locator('li')
+      .filter({ hasText: `Logged in as ${userLogin}` });
+    await expect(loggedUserInfo).toBeVisible();
   }
 }
