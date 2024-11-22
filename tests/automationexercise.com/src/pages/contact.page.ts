@@ -1,6 +1,6 @@
 import { ContactFormDataModel } from '../models/contact.model';
 import { BasePage } from './base.page';
-import { Locator, Page } from '@playwright/test';
+import { Locator, Page, expect } from '@playwright/test';
 
 export class ContactPage extends BasePage {
   readonly contactFormHeader: Locator;
@@ -40,5 +40,9 @@ export class ContactPage extends BasePage {
     });
 
     await this.submitButton.click();
+  }
+
+  async assertBackToHomeButton(): Promise<void> {
+    await expect(this.page).toHaveURL('/');
   }
 }
