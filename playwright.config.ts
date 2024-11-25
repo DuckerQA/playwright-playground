@@ -9,7 +9,7 @@ export const STORAGE_STATE = path.join(
 export default defineConfig({
   testDir: './tests',
   globalSetup: 'tests/automationexercise.com/src/global.setup.ts',
-  timeout: 60_000,
+  timeout: 30_000,
   expect: {
     timeout: 10_000,
   },
